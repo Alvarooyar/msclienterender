@@ -1,7 +1,7 @@
 services:
   - type: web
     name: mscliente
-    runtime: java
+    env: java
     repo: https://github.com/ruke-duoc-uc/bosques-australes.git
     plan: free
     region: oregon
@@ -16,7 +16,7 @@ services:
       - key: SPRING_DATASOURCE_HOST
         fromDatabase:
           name: mscliente-db
-          property: hostname
+          property: host
       - key: SPRING_DATASOURCE_PORT
         fromDatabase:
           name: mscliente-db
@@ -24,7 +24,7 @@ services:
       - key: SPRING_DATASOURCE_DBNAME
         fromDatabase:
           name: mscliente-db
-          property: databaseName
+          property: database
       - key: SPRING_DATASOURCE_USERNAME
         fromDatabase:
           name: mscliente-db
