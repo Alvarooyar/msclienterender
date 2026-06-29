@@ -13,10 +13,18 @@ services:
         value: prod
       - key: SERVER_PORT
         value: 8081
-      - key: SPRING_DATASOURCE_URL
+      - key: SPRING_DATASOURCE_HOST
         fromDatabase:
           name: mscliente-db
-          property: connectionString
+          property: hostname
+      - key: SPRING_DATASOURCE_PORT
+        fromDatabase:
+          name: mscliente-db
+          property: port
+      - key: SPRING_DATASOURCE_DBNAME
+        fromDatabase:
+          name: mscliente-db
+          property: databaseName
       - key: SPRING_DATASOURCE_USERNAME
         fromDatabase:
           name: mscliente-db
@@ -28,6 +36,5 @@ services:
 
 databases:
   - name: mscliente-db
-    type: postgresql
     plan: free
     region: oregon
