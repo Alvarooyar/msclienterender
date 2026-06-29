@@ -1,12 +1,10 @@
 services:
   - type: web
     name: mscliente
-    env: java
+    env: docker
     repo: https://github.com/ruke-duoc-uc/bosques-australes.git
     plan: free
     region: oregon
-    buildCommand: ./mvnw clean package -DskipTests
-    startCommand: java -jar target/*.jar
     healthCheckPath: /api/cliente
     envVars:
       - key: SPRING_PROFILES_ACTIVE
