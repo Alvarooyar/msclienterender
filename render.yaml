@@ -1,0 +1,33 @@
+services:
+  - type: web
+    name: mscliente
+    runtime: java
+    repo: https://github.com/ruke-duoc-uc/bosques-australes.git
+    plan: free
+    region: oregon
+    buildCommand: ./mvnw clean package -DskipTests
+    startCommand: java -jar target/*.jar
+    healthCheckPath: /api/cliente
+    envVars:
+      - key: SPRING_PROFILES_ACTIVE
+        value: prod
+      - key: SERVER_PORT
+        value: 8081
+      - key: SPRING_DATASOURCE_URL
+        fromDatabase:
+          name: mscliente-db
+          property: connectionString
+      - key: SPRING_DATASOURCE_USERNAME
+        fromDatabase:
+          name: mscliente-db
+          property: user
+      - key: SPRING_DATASOURCE_PASSWORD
+        fromDatabase:
+          name: mscliente-db
+          property: password
+
+databases:
+  - name: mscliente-db
+    type: postgresql
+    plan: free
+    region: oregon
