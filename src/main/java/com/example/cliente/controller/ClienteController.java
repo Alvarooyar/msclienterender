@@ -32,6 +32,14 @@ public class ClienteController {
     public ClienteController(ClienteService clienteService) {
         this.clienteService = clienteService;
     }
+
+    @GetMapping("/")
+    public ResponseEntity<Void> home() {
+        return ResponseEntity.status(HttpStatus.FOUND)
+                .header("Location", "/doc/swagger-ui.html")
+                .build();
+    }
+
     @Operation(
             summary = "Obtiene todos los clientes",
             description = "Retorna una lista con todos los clientes comerciales registrados en el sistema"
