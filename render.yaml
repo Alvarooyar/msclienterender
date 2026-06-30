@@ -2,7 +2,7 @@ services:
   - type: web
     name: mscliente
     env: docker
-    repo: https://github.com/ruke-duoc-uc/bosques-australes.git
+    repo: https://github.com/Alvarooyar/msclienterender.git
     plan: free
     region: oregon
     healthCheckPath: /api/cliente
